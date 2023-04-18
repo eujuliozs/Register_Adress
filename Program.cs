@@ -1,4 +1,8 @@
-namespace Register_with_addres
+using Microsoft.EntityFrameworkCore;
+using Register_with_address.Data;
+using Register_with_address.Models.Service;
+
+namespace Register_with_address
 {
     public class Program
     {
@@ -6,8 +10,11 @@ namespace Register_with_addres
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<register_and_addressContext>(options => options.UseMySql("server=localhost;port=3306;user=root;password=1234;database=register_and_address", ServerVersion.Parse("8.0.30-mysql")));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<PessoaSerivce>();
 
             var app = builder.Build();
 
