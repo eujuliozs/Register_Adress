@@ -1,6 +1,6 @@
-﻿namespace Register_with_address.Models
+﻿namespace Register_with_address.Models.ViewModel
 {
-    public class Endereço
+    public class EndereçoViewModel
     {
         public int Id { get; private set; }
         public string Cep { get; set; }
@@ -9,9 +9,5 @@
         public string Bairro { get; set; }
         public string Localidade { get; set; }
         public string Uf { get; set; }
-        public string Ibge { get; set; }
-        public string Gia { get; set; }
-        public string ddd { get; set; }
-        public string Siafi { get; set; }
     }
 }

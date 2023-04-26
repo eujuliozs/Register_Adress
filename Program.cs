@@ -15,6 +15,12 @@ namespace Register_with_address
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<PessoaSerivce>();
+            builder.Services.AddScoped<IEndereçoService, EndereçoService>();
+
+            builder.Services.AddHttpClient("ViaCepApi" , c =>
+            {
+                c.BaseAddress = new Uri(builder.Configuration["API:ViaCepApi"]);
+            });
 
             var app = builder.Build();
 
