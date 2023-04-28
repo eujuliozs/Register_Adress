@@ -10,42 +10,46 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Index">
+        <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <label for="Cep"></label>
+                    <input class="form-control" name="Cep" value=@ViewData["Cep"] />
+                </div>
+            <button type="submit" class="btn btn-primary">Auto complete</button>
+        </form>
+        <form asp-action="Create">
 
-            <div class="form-group">
-                <label asp-for="Cep" class="control-label"></label>
-                <input asp-for="Cep" class="form-control" />
-                <span asp-validation-for="Cep" class="text-danger"></span>
+            <div class="form-group"> 
+                <label asp-for="Logradouro" class="control-label" ></label>
+                <input asp-for="Logradouro" class="form-control" value=@ViewData["Logradouro"] />
+                
             </div>
 
             <div class="form-group">
-                <label asp-for="Logradouro" class="control-label"></label>
-                <input asp-for="Logradouro" class="form-control" />
-                <span asp-validation-for="Logradouro" class="text-danger"></span>
+                <label asp-for="Numero" class="control-label" ></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Complemento" class="control-label"></label>
-                <input asp-for="Complemento" class="form-control" />
+                <input asp-for="Complemento" class="form-control" value=@ViewData["Complemento"] />
                 <span asp-validation-for="Complemento" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Bairro" class="control-label"></label>
-                <input asp-for="Bairro" class="form-control" />
-                <span asp-validation-for="Bairro" class="text-danger"></span>
+                <label asp-for="Bairro" class="control-label" ></label>
+                <input asp-for="Bairro" class="form-control" value=@ViewData["Bairro"] />
             </div>
 
             <div class="form-group">
-                <label asp-for="Localidade" class="control-label"></label>
-                <input asp-for="Localidade" class="form-control" />
-                <span asp-validation-for="Localidade" class="text-danger"></span>
+                <label asp-for="Localidade" class="control-label" ></label>
+                <input asp-for="Localidade" class="form-control" value=@ViewData["Localidade"] />
             </div>
 
             <div class="form-group">
-                <label asp-for="Uf" class="control-label"></label>
-                <input asp-for="Uf" class="form-control" />
-                <span asp-validation-for="Uf" class="text-danger"></span>
+                <label asp-for="Uf" class="control-label" ></label>
+                <input asp-for="Uf" class="form-control" value=@ViewData["Uf"] />
             </div>
 
 

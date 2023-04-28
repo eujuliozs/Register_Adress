@@ -15,7 +15,7 @@ namespace Register_with_address
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<PessoaSerivce>();
-            builder.Services.AddScoped<IEndereçoService, EndereçoService>();
+            builder.Services.AddScoped<CepService>();
 
             builder.Services.AddHttpClient("ViaCepApi" , c =>
             {
