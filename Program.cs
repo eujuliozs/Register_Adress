@@ -13,14 +13,9 @@ namespace Register_with_address
             builder.Services.AddDbContext<register_and_addressContext>(options => options.UseMySql("server=localhost;port=3306;user=root;password=1234;database=register_and_address", ServerVersion.Parse("8.0.30-mysql")));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
-            builder.Services.AddScoped<PessoaSerivce>();
+            builder.Services.AddScoped<EndereçoService>();
             builder.Services.AddScoped<CepService>();
-
-            builder.Services.AddHttpClient("ViaCepApi" , c =>
-            {
-                c.BaseAddress = new Uri(builder.Configuration["API:ViaCepApi"]);
-            });
+            builder.Services.AddHttpClient<CepService>();
 
             var app = builder.Build();
 

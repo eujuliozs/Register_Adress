@@ -1,69 +1,74 @@
-﻿@model Register_with_address.Models.Endereço
+﻿@model IEnumerable<Endereço>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Morador)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Logradouro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Complemento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bairro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Localidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uf)
+                    </th>
 
-<h1>Index</h1>
-
-<h4>Endereço</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <label for="Cep"></label>
-                    <input class="form-control" name="Cep" value=@ViewData["Cep"] />
-                </div>
-            <button type="submit" class="btn btn-primary">Auto complete</button>
-        </form>
-        <form asp-action="Create">
-
-            <div class="form-group"> 
-                <label asp-for="Logradouro" class="control-label" ></label>
-                <input asp-for="Logradouro" class="form-control" value=@ViewData["Logradouro"] />
-                
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Numero" class="control-label" ></label>
-                <input asp-for="Numero" class="form-control" />
-                <span asp-validation-for="Numero" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Complemento" class="control-label"></label>
-                <input asp-for="Complemento" class="form-control" value=@ViewData["Complemento"] />
-                <span asp-validation-for="Complemento" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Bairro" class="control-label" ></label>
-                <input asp-for="Bairro" class="form-control" value=@ViewData["Bairro"] />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Localidade" class="control-label" ></label>
-                <input asp-for="Localidade" class="form-control" value=@ViewData["Localidade"] />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Uf" class="control-label" ></label>
-                <input asp-for="Uf" class="form-control" value=@ViewData["Uf"] />
-            </div>
-
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Morador)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Logradouro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Complemento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bairro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Localidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Uf)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>  
+                }
+            </tbody>
+        </table>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

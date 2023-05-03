@@ -26,7 +26,6 @@ namespace Register_with_address.Data
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        DbSet<Pessoa> Pessoas { get; set; } = default!;
-        DbSet<Endereço> Endereço { get; set; } = default!;
+        public DbSet<Endereço> Endereço { get; set; } = default!;
     }
 }

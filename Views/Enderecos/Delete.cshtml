@@ -1,0 +1,74 @@
+﻿@model Endereço
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="align-content-center">
+    <h1>@ViewData["Title"]</h1>
+
+    <h3>Você tem certeza?</h3>
+
+    <div>
+        <h4>Endereço</h4>
+        <hr />
+        <d1 class="list-group-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Morador)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Morador)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cep)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Cep)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Logradouro)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Logradouro)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Bairro)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Bairro)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Numero)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Numero)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Uf)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Uf)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Complemento)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Complemento)
+            </dd>
+
+            <input type="hidden" asp-for="Id" default-value="@Model.Id" />
+
+            <form asp-action="Delete">
+                <input type="submit" value="Delete" class="btn-danger" asp-route-id="@Model.Id" />
+                <a asp-action="Index">Voltar a lista</a>
+            </form>
+
+        </d1>
+
+    </div>
+</div>

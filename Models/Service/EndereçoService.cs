@@ -1,24 +1,45 @@
-﻿using Register_with_address.Models.ViewModel;
-using System.Drawing;
-using System.Security.Cryptography.Xml;
-using System.Text.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Register_with_address.Data;
+using Register_with_address.Models.Service.Exceptions;
 
 namespace Register_with_address.Models.Service
 {
-    public class CepService
+    public class EndereçoService
     {
-        private readonly HttpClient _httpClient;
-
-        public CepService(HttpClient httpClient)
+        private readonly register_and_addressContext _context;
+        public EndereçoService(register_and_addressContext context)
         {
-            _httpClient = httpClient;
+            _context = context;
         }
-
-        public async Task<Endereço> GetCepInfo(string cep)
+        public void Insert(Endereço endereço)
         {
-            var response = await _httpClient.GetFromJsonAsync<Endereço>($"https://viacep.com.br/ws/{cep}/json/");
+            if(endereço is null)
+            {
+                throw new ServiceException("Object is null");
+            }
 
-            return response;
+            _context.Add(endereço);
+            _context.SaveChanges();
+            
+        }
+        public List<Endereço> FindAll()
+        {
+            return _context.Endereço.ToList();
+        }
+        public void DeleteById(int id)
+        {
+            var query = _context.Endereço.Where(end => end.Id == id).SingleOrDefault();
+            _context.Remove(query);
+            _context.SaveChanges();
+        }
+        public void Update(Endereço endereço)
+        {
+            _context.Endereço.Update(endereço);
+            _context.SaveChanges();
+        }
+        public Endereço? FindById(int id)
+        {
+            return _context.Endereço.Where(end => end.Id == id).SingleOrDefault();
         }
     }
 }

@@ -1,18 +1,24 @@
 ﻿
-using Microsoft.Build.Framework;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Register_with_address.Models
 {
     public class Endereço
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
+
+        [Required]
+        [JsonIgnore(Condition =JsonIgnoreCondition.Always)]
+        [StringLength(100, MinimumLength =3, ErrorMessage ="Nome deve ser entre 3 e 100 caracteres")]
+        [Display(Name ="Nome")]
+        public string Morador  { get; set; }
         public string Cep { get; set; }
 
         [Required]
         public string Logradouro { get; set; }
 
-        [Required]
         public string Complemento { get; set; }
 
         [Required]
@@ -24,20 +30,6 @@ namespace Register_with_address.Models
         [Required]
         public string Uf { get; set; }
 
-        [Required]
-        public string Ibge { get; set; }
-
-        [Required]
-        public string Gia { get; set; }
-
-        [Required]
-        public string ddd { get; set; }
-
-        [Required]
-        public string Siafi { get; set; }
-
-        [JsonIgnore(Condition= JsonIgnoreCondition.Always)]
-        [Required]
         public string Numero { get; set; }
     }
 }
